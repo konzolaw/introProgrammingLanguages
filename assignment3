@@ -1,0 +1,67 @@
+class SimpleCalculator:
+    def __init__(self, name):
+        self.name = name
+
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+        if b == 0:
+            return 'Syntax Error! Division by zero is prohibited'
+        else:
+            return a / b
+
+    def greet_user(self):
+        print("Hello, " + self.name + "'!' Welcome to my Simple Calculator.")
+
+    def run_calculator(self):
+        while True:
+            print("Choose an operation:")
+            print("1. Add")
+            print("2. Subtract")
+            print("3. Multiply")
+            print("4. Divide")
+            print("5. Exit")
+
+            choice = input("Select a choice (1, 2, 3, 4, 5): ")
+
+            if choice in ('1', '2', '3', '4'):
+                num1 = float(input("please Input the first number: "))
+                num2 = float(input("please Input the second number: "))
+
+                if choice == '1':
+                    print(num1, "+", num2, "=", self.add(num1, num2))
+                    print("continue calculating?")
+
+                elif choice == '2':
+                    print(num1, "-", num2, "=", self.subtract(num1, num2))
+                    print("continue calculating?")
+
+                elif choice == '3':
+                    print(num1, "*", num2, "=", self.multiply(num1, num2))
+                    print("continue calculating?")
+
+                elif choice == '4':
+                    print(num1, "/", num2, "=", self.divide(num1, num2))
+                    print("continue calculating?")
+
+            elif choice == '5':
+                print("Closing Calculator.... ")
+                print("Goodbye " + self.name)
+                break
+
+            else:
+                print("Invalid Input")
+
+
+# Main program
+name = input("Enter your name, please: ")
+calculator = SimpleCalculator(name)
+calculator.greet_user()
+calculator.run_calculator()
