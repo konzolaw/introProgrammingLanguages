@@ -1,0 +1,90 @@
+#irke konzolo 
+#sct211-0081/2022
+
+
+class SimpleCalculator:
+    def __init__(self, name):
+        self.name = name
+
+    def add(self, a, b):
+        try:
+            return a + b
+        except TypeError:
+          print("Error: You can only add integers and floats.")
+        return None
+
+    def subtract(self, a, b):
+        try:
+            return a - b
+        except TypeError:
+          print("Error: You can only subtract integers and floats.")
+        return None
+
+    def multiply(self, a, b):
+        try:
+            return a * b
+        except TypeError:
+          print("Error: You can only multiply integers and floats.")
+        return None
+
+    def divide(self, a, b):
+        try:
+            return a / b
+        except TypeError:
+            print("Error: You can only divide integers and floats.")
+            return None
+        except ZeroDivisionError:
+          print("Error: You can't divide by zero.")
+        return None
+
+    def greet_user(self):
+        print("Hello, " + self.name + "'!' Welcome to my Simple Calculator.")
+
+    def run_calculator(self):
+        while True:
+            print("Choose an operation:")
+            print("1. Add")
+            print("2. Subtract")
+            print("3. Multiply")
+            print("4. Divide")
+            print("5. Exit")
+
+            choice = input("Select a choice (1, 2, 3, 4, 5): ")
+
+            if choice in ('1', '2', '3', '4'):
+                num1 = float(input("please Input the first number: "))
+                num2 = float(input("please Input the second number: "))
+
+                if choice == '1':
+                    print(num1, "+", num2, "=", self.add(num1, num2))
+                    print("continue calculating?")
+
+                elif choice == '2':
+                    print(num1, "-", num2, "=", self.subtract(num1, num2))
+                    print("continue calculating?")
+
+                elif choice == '3':
+                    print(num1, "*", num2, "=", self.multiply(num1, num2))
+                    print("Another calculation?")
+
+                elif choice == '4':
+                    print(num1, "/", num2, "=", self.divide(num1, num2))
+                    print("Another calculation?")
+
+            elif choice == '5':
+                print("Closing Calculator.... ")
+                print("Goodbye " + self.name)
+                break
+
+            else:
+                print("Invalid Input")
+        while choice not in ('1', '2', '3', '4', '5'):
+           print("Invalid choice. Please choose a valid operation.")
+        choice = input("Select a choice (1, 2, 3, 4, 5): ")        
+
+
+# Main program
+name = input("Enter your name, please: ")
+calculator = SimpleCalculator(name)
+calculator.greet_user()
+calculator.run_calculator()
